@@ -15,6 +15,8 @@ using LongVec = std::vector<long>;
 bool isPrime(const long num);
 LongVec toList(std::string csv);
 
+// Performs isPrime on each number in the array.
+// Utilizing openmp-for allows us to accelerate this process.
 int main(int argc, char *argv[]) {
     // Get list of numbers to process from command-line args.
     const std::string inputs = (argc > 1 ? argv[1] : "");
@@ -42,6 +44,9 @@ LongVec toList(std::string csv) {
     return LongVec(in, eos);
 }
 
+/*
+ * Checks if a number is prime or not.
+ */
 bool isPrime(const long num) {
     const int MaxFact = sqrt(num) + 1;
     for (int fact = 2; (fact < MaxFact); fact++) {
